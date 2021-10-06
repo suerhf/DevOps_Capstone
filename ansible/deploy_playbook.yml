@@ -1,0 +1,26 @@
+---
+ - name: Deploy
+   hosts: aws
+   tasks:
+   - name: Copy files to remote server
+     copy:
+       src: "{{ item.src }}"
+       dest: "{{ item.dest }}"
+     loop:
+       - { src: '../workspace/target/java-webapp.war' , dest: '/var/tmp/java-webapp.war' }
+       - { src: '../tomcat_config/docker-compose.yml' , dest: '/var/tmp/docker-compose.yml' }
+     become: true
+
+   - name: Tear down existing services
+     docker_compose:
+       project_src: /var/tmp
+       state: absent
+
+   - name: Run `docker-compose up`
+     docker_compose:
+       project_src: /var/tmp
+       build: no
+     register: output
+
+   - debug:
+       var: output

@@ -1,0 +1,15 @@
+---
+ - name: Build Artifacts
+   hosts: 127.0.0.1 
+   tasks:
+   - name: "source code download"
+     git:
+       repo: 'https://github.com/ipcrm/java_webapp_war.git'
+       dest: ../workspace 
+       version: master
+       depth: 1
+
+   - name: "source code build"
+     command: mvn --batch-mode --quiet install
+     args:
+       chdir: ../workspace

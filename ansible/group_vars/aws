@@ -1,0 +1,10 @@
+# Variables for EC2 instances
+---
+ansible_ssh_private_key_file: /home/ec2-user/.ssh/sue.pem
+aws_access_key: ASIAUTYFOD4PHLWAEZX4 
+aws_secret_key: REaQ/3arhs4Ci4gboWlQjSkXLJ6jLX/9Ydmjp/if 
+key_name: sue
+aws_region: us-east-1
+vpc_id: <enter VPC ID>
+ami_id: ami-0dc2d3e4c0f9ebd18
+instance_type: t2.micro
