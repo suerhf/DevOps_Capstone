@@ -10,6 +10,6 @@
        depth: 1
 
    - name: "source code build"
-     command: mvn --batch-mode --quiet install
+     command: mvn --batch-mode install
      args:
        chdir: ../workspace
